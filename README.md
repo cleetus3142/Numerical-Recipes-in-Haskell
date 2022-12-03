@@ -4,7 +4,7 @@ Here is a collection of simple Haskell programs that could be a help to people l
 * Learn You a Haskell for Great Good! by  Miran Lipovaca
 * Learn Physics with Functional Programming by  Scott N. Walck
 
-**Important:** Youhave to use ghci to runs these programs. Do like so:
+**Important:** You have to use ghci to runs these programs. Do like so:
 ```
 $ ghci                         
 GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
