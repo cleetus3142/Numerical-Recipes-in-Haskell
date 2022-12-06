@@ -26,7 +26,9 @@ computer. as root do:
 Then in your user account do:
 
 $ cabal update
+
 $ cabal install matrix
+
 $ cabal install --lib matrix
 
 Now you can run the program cramersRule.hs. Do the following:
