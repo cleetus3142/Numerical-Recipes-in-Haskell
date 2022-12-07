@@ -24,14 +24,14 @@ computer. as root do:
 \# pkg_add cabal-install
 
 Then in your user account do:
-
+```
 $ cabal update
 
 $ cabal install matrix
 
 $ cabal install --lib matrix
-
-Now you can run the program cramersRule.hs. Do the following:
+```
+The same three above commands are use on Linux.
 
 
 
