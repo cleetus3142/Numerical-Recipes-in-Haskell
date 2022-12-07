@@ -1,0 +1,39 @@
+$ ghci 
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Loaded package environment from /home/cleetus/.ghc/x86_64-linux-8.8.4/environments/default
+Prelude> log 2.71828
+0.999999327347282
+Prelude> :l trapezoidIntg.hs
+[1 of 1] Compiling Main             ( trapezoidIntg.hs, interpreted )
+Ok, one module loaded.
+*Main> in
+init      integral  interact
+*Main> integral 0.02 (\x -> x*log(1+x)) 0.0 1.0
+0.25003976
+*Main> integral 0.01 (\x -> x*log(1+x)) 0.0 1.0
+0.25000992
+*Main> arctan 1.0
+
+<interactive>:5:1: error:
+    • Variable not in scope: arctan :: Double -> t
+    • Perhaps you meant ‘atan’ (imported from Prelude)
+*Main> atan 1.0
+0.7853981633974483
+*Main> integral 0.02 (\x -> x^2*atan x) 0 1
+0.21072625
+*Main> (pi - 2.0 + 2.0*log(2.0))/12.0
+0.210657251225807
+*Main> integral 0.02 (\x -> sqrt(x)*log(x)) 0.000001 1
+-0.44122794
+*Main> (-4.0/9.0)
+-0.4444444444444444
+*Main> integral 0.01 (\x -> sqrt(x)*log(x)) 0.0000001 1
+-0.44314325
+*Main> integral 0.001 (\x -> sqrt(x)*log(x)) 0.0000001 1
+-0.44439006
+*Main> -- (-4.0/9.0) is the accepted answer
+*Main> integral 0.01 (\x -> sqrt(1-x^2)) 0.0 1.0
+0.78510404
+*Main> -- Accepted answer
+*Main> pi/4.0
+0.7853981633974483
