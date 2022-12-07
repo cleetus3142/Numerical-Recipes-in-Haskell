@@ -15,13 +15,12 @@ ghci> integral 0.1 cos 0 pi
 -5.8431016703149555e-2
 ```
 Some of the linear algebra routines require packages from
-cabal. They can be installed on OpenBSD with the following commands.
-Cabal: Common Architecture for Building Applications and Libraries
+cabal. Cabal: Common Architecture for Building Applications and Libraries
 
 First, you have to have cabal-install installed on your OpenBSD
 or Linux computer. 
 
-Once cabal-install is isn stalled, do this in your user account:
+Once cabal-install is installed, do this in your user account:
 ```
 $ cabal update
 
