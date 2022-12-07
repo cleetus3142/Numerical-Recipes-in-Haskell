@@ -19,11 +19,9 @@ cabal. They can be installed on OpenBSD with the following commands.
 Cabal: Common Architecture for Building Applications and Libraries
 
 First, you have to have cabal-install installed on your OpenBSD
-computer. as root do:
+or Linux computer. 
 
-\# pkg_add cabal-install
-
-Then in your user account do:
+Once cabal-install is isn stalled, do this in your user account:
 ```
 $ cabal update
 
@@ -31,7 +29,7 @@ $ cabal install matrix
 
 $ cabal install --lib matrix
 ```
-The same three above commands are use on Linux.
+
 
 
 
