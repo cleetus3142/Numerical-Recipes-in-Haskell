@@ -1,0 +1,25 @@
+*Main> :l simpsonsRule.hs 
+[1 of 1] Compiling Main             ( simpsonsRule.hs, interpreted )
+Ok, one module loaded.
+*Main> in
+init      integral  interact
+*Main> integral 0.02 (\x -> x*log(1+x)) 0.0 1.0
+0.25000000222100144
+*Main> integral 0.02 (\x -> x^2*atan x) 0 1
+0.2106572463349269
+*Main> -- Accepted answer
+*Main> (pi - 2.0 + 2.0*log(2.0))/12.0
+0.210657251225807
+*Main> integral 0.02 (\x -> sqrt(x)*log(x)) 0.000001 1.0
+-0.4428549702647551
+*Main> -- Accepted answer
+*Main> (-4.0/9.0)
+-0.4444444444444444
+*Main> integral 0.01 (\x -> sqrt(x)*log(x)) 0.000001 1.0
+-0.4438394964541701
+*Main> integral 0.01 (\x -> sqrt(1-x^2)) 0.0 1.0
+0.785283301334807
+*Main> -- Accepted answer
+*Main> pi/4.0
+0.7853981633974483
+*Main> 
