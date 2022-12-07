@@ -1,6 +1,6 @@
 -- Imported and modified from
 -- https://rosettacode.org/wiki/Cramer%27s_rule#Haskell
--- See the README.md for an example of how to run this program
+-- See the Examples section of this repository for an example of how to run this program
 
 import Data.Matrix
 
