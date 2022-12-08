@@ -1,3 +1,4 @@
+**Unless otherwise specified, the following License applies. All the programs I write are licensed under the BSD 2 clause license**
 ## Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 You are free to:
 
