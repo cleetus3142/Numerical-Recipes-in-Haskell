@@ -1,0 +1,29 @@
+$ ghci                 
+Loaded package environment from /home/cleetus/.ghc/x86_64-openbsd-9.2.4/environments/default
+GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
+ghci> :l dblIntg.hs
+[1 of 1] Compiling Main             ( dblIntg.hs, interpreted )
+Ok, one module loaded.
+ghci> dblIntg 0.0001 (\x y -> x^2+y^2) 0 1 0 1
+0.6666666699996834
+ghci> dblIntg 0.0001 (\x y -> x+y) 0 1 0 1
+1.0000000000000018
+ghci> dblIntg 0.0001 (\q r -> r^3) 0 (2*pi) 0 1
+1.5708000155730097
+ghci> -- Accepted answer
+ghci> pi/2.0
+1.5707963267948966
+ghci> -- Integral of unit cube
+ghci> dblIntg 0.1 (\x y -> 1.0) 0 1 0 1
+1.0000000000000007
+ghci> dblIntg 0.0005 (\q r -> r^5*(sin(q)*cos(q))^2) 0 (2*pi) 0 1
+0.13089977570858521
+ghci> -- Accepted answer
+ghci> pi/24
+0.1308996938995747
+ghci> dblIntg 0.001 (\q r -> (r*(cos(q)^3 + sin(q)^3)-3*r^2*sin(q)*cos(q))) 0 (2*pi) 0 1
+-9.276337516608054e-5
+ghci> dblIntg 0.0005 (\q r -> (r*(cos(q)^3 + sin(q)^3)-3*r^2*sin(q)*cos(q))) 0 (2*pi) 0 1
+-9.27170723511243e-5
+ghci> -- Accepted answer
+0.0
