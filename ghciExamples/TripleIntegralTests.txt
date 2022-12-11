@@ -1,0 +1,31 @@
+$ ghci
+Loaded package environment from /home/cleetus/.ghc/x86_64-openbsd-9.2.4/environments/default
+GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
+ghci> :l tripleIntgTrap.hs
+[1 of 1] Compiling Main             ( tripleIntgTrap.hs, interpreted )
+Ok, one module loaded.
+ghci> -- Test over cubes and boxes  with density = 1.0
+ghci> trplIntg 0.1 (\x y z -> 1.0) 0 1 0 1 0 1
+0.99999416
+ghci> trplIntg 0.1 (\x y z -> 1.0) 0 1 0 1 0 2
+2.0000162
+ghci> trplIntg 0.1 (\x y z -> 1.0) 0 1 0 2 0 2
+3.999946
+ghci> trplIntg 0.1 (\x y z -> 1.0) 0 2 0 1 0 2
+3.999946
+ghci> trplIntg 0.1 (\x y z -> 1.0) 0 2 0 2 0 2
+7.9996824
+ghci> trplIntg 0.01 (\q p r -> r^3*sin(q)) 0 pi 0 (2*pi) 0 1
+3.0342133
+ghci> trplIntg 0.005 (\q p r -> r^3*sin(q)) 0 pi 0 (2*pi) 0 1
+2.033901
+ghci> :r
+[1 of 1] Compiling Main             ( tripleIntgTrap.hs, interpreted )
+Ok, one module loaded.
+ghci> -- Rerun with double precision
+ghci> trplIntg 0.005 (\q p r -> r^3*sin(q)) 0 pi 0 (2*pi) 0 1
+3.142563766369175
+ghci> -- Much Better. The accepted answe is Pi
+ghci> pi
+3.141592653589793
+ghci>
