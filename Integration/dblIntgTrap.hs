@@ -28,28 +28,29 @@ The derivation of the routine:
   |a|_|_|_|_|a|
 
 The corners (a) are given by:
-dt^2*(f lft lwr  + f rght lwr  + f lft uper + f rght uper)/4.0
+dt^2*(f x1 y1  + f x2 y1  + f x1 y2 + f x2 y2)/4.0
 The bottom row between the (a) is give by
-(sum [ (f x lwr)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt]])/2.0
+(sum [ (f x y1)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0
 The top row between the (a) is given by
-(sum [ (f x uper)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt]])/2.0
+(sum [ (f x y2)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0
 The left column between the (a) is given by
-(sum [ (f lft y)*dt^2 | y <- [lwr+dt, lwr+2*dt..uper-dt]])/2.0
+(sum [ (f x1 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0
 The right column between the (a) is given by
-(sum [ (f rght y)*dt^2 | y <- [lwr+dt, lwr+2*dt..uper-dt]])/2.0
+(sum [ (f x2 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0
 Finally, the interior area is given by:
-sum [ (f x y)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt], y <- [lwr+dt, lwr+2*dt..uper-dt]]
+sum [ (f x y)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt], y <- [y1+dt, y1+2*dt..y2-dt]]
 Adding these all up you get your integral.
 -}
 -- BSD 2-Clause License Copyright -- (c) 2022, Jonathan Drews
 
-type R=Double
+type R=Float
+
 
 dblIntg ::  R -> (R -> R -> R) -> R -> R -> R -> R -> R 
-dblIntg dt f lft rght lwr uper  = dt^2*(f lft lwr  + f rght lwr  + f lft uper + f rght uper)/4.0 +
-  (sum [ (f x lwr)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt]])/2.0 +
-  (sum [ (f x uper)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt]])/2.0 +
-  (sum [ (f lft y)*dt^2 | y <- [lwr+dt, lwr+2*dt..uper-dt]])/2.0 +
-  (sum [ (f rght y)*dt^2 | y <- [lwr+dt, lwr+2*dt..uper-dt]])/2.0 +
-  sum [ (f x y)*dt^2 | x <- [lft+dt,lft+2*dt..rght-dt], y <- [lwr+dt, lwr+2*dt..uper-dt]]
+dblIntg dt f x1 x2 y1 y2  = dt^2*(f x1 y1  + f x2 y1  + f x1 y2 + f x2 y2)/4.0 +
+  (sum [ (f x y1)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0 +
+  (sum [ (f x y2)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0 +
+  (sum [ (f x1 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0 +
+  (sum [ (f x2 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0 +
+  sum [ (f x y)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt], y <- [y1+dt, y1+2*dt..y2-dt]]
   
