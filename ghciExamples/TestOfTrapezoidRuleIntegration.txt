@@ -1,34 +1,28 @@
-$ ghci 
-GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
-Loaded package environment from /home/cleetus/.ghc/x86_64-linux-8.8.4/environments/default
-Prelude> log 2.71828
-0.999999327347282
-Prelude> :l trapezoidIntg.hs
+$ ghci
+ghci
+Loaded package environment from /home/cleetus/.ghc/x86_64-openbsd-9.2.4/environments/default
+GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
+ghci> :l trapezoidIntg.hs
 [1 of 1] Compiling Main             ( trapezoidIntg.hs, interpreted )
 Ok, one module loaded.
-*Main> in
-init      integral  interact
-*Main> integral 0.02 (\x -> x*log(1+x)) 0.0 1.0
-0.25003976
-*Main> integral 0.01 (\x -> x*log(1+x)) 0.0 1.0
-0.25000992
-*Main> atan 1.0
-0.7853981633974483
-*Main> integral 0.02 (\x -> x^2*atan x) 0 1
-0.21072625
-*Main> (pi - 2.0 + 2.0*log(2.0))/12.0
+ghci> integral 50 (\x -> x*log(1+x)) 0.0 1.0
+0.25000994285845013
+ghci> -- Accepted answer is 0.25
+ghci> integral 50 (\x -> x^2*atan x) 0 1
+0.21067450793825412
+ghci> -- Accepted answer is:
+ghci> (pi - 2.0 + 2.0*log(2.0))/12.0
 0.210657251225807
-*Main> integral 0.02 (\x -> sqrt(x)*log(x)) 0.000001 1
--0.44122794
-*Main> (-4.0/9.0)
+ghci> integral 50 (\x -> sqrt(x)*log(x)) 0.000001 1
+-0.44318659822658646
+ghci> integral 100 (\x -> sqrt(x)*log(x)) 0.000001 1
+-0.44395958989251166
+ghci> -- Accepted answer is:
+ghci> (-4.0/9.0)
 -0.4444444444444444
-*Main> integral 0.01 (\x -> sqrt(x)*log(x)) 0.0000001 1
--0.44314325
-*Main> integral 0.001 (\x -> sqrt(x)*log(x)) 0.0000001 1
--0.44439006
-*Main> -- (-4.0/9.0) is the accepted answer
-*Main> integral 0.01 (\x -> sqrt(1-x^2)) 0.0 1.0
-0.78510404
-*Main> -- Accepted answer
-*Main> pi/4.0
+ghci> integral 50 (\x -> sqrt(1-x^2)) 0.0 1.0
+0.7851042579447617
+ghci> -- Accepted answer
+ghci> pi/4.0
 0.7853981633974483
+ghci> 
