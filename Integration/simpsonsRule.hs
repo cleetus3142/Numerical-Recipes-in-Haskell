@@ -1,6 +1,9 @@
 -- Computes the integral by simpsons rule: I ~ 4/3*dt*(f(a+dt) + f(a+3*dt) + ...
 -- f(b-dt)) + 2/3*dt*(f(a+2*dt) + f(a+4*dt) + ... + f(b-2*dt)) +
--- dt/3*(f(a) + f(b))
+-- dt/3*(f(a) + f(b)) dt = (a-b)/2n  where a is the lower limit and b is the upper limit.
+-- n is half the number ofsteps for the imterval of integraion. The number of steps has
+-- to be even for simpsons rule to work. See the book "Differential and Integral Calculus"
+-- by Richard Courant,Volume 1, page 344
 {-
 BSD 2-Clause License
 
@@ -21,14 +24,15 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
 POSSIBILITY OF SUCH DAMAGE.
 -}
 
-sqrd :: Double -> Double
-sqrd x = x^2
 
 type R = Double
 type Integration = (R -> R) -> R -> R -> R
 
-integral :: R -> Integration
-integral dt f a b = dt/3.0*(f(a)+f(b)) +
- 4.0/3.0*(sum [ f t * dt | t <- [a+dt, a+3*dt..b-dt]]) +
- 2.0/3.0*(sum [ f t * dt | t <- [a+2*dt, a+4*dt..b-2*dt]])
- 
+integral :: Int -> Integration
+-- n is the half step size, f is the function, a is the lower limit and b is the upper limit
+integral n f a b =
+  let dt=(b-a)/fromIntegral(2*n)
+  in dt/3.0*(f(a)+f(b)) +
+  4.0/3.0*(sum [ f t * dt | t <- [a+dt, a+3*dt..b-dt]]) +
+  2.0/3.0*(sum [ f t * dt | t <- [a+2*dt, a+4*dt..b-2*dt]])
+
