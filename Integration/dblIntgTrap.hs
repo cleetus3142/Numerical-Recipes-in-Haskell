@@ -1,4 +1,8 @@
 -- Computes a double integral by the trapezoid rule
+-- Computes the double integral by the trapezoid rule
+-- n is half the number of steps for the imterval of integraion.
+-- See the book "Differential and Integral Calculus"
+-- by Richard Courant,Volume 1, page 343
 {-
 
    /b /d
@@ -42,15 +46,21 @@ sum [ (f x y)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt], y <- [y1+dt, y1+2*dt..y2-dt]]
 Adding these all up you get your integral.
 -}
 -- BSD 2-Clause License Copyright -- (c) 2022, Jonathan Drews
-
 type R=Float
 
 
-dblIntg ::  R -> (R -> R -> R) -> R -> R -> R -> R -> R 
-dblIntg dt f x1 x2 y1 y2  = dt^2*(f x1 y1  + f x2 y1  + f x1 y2 + f x2 y2)/4.0 +
-  (sum [ (f x y1)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0 +
-  (sum [ (f x y2)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt]])/2.0 +
-  (sum [ (f x1 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0 +
-  (sum [ (f x2 y)*dt^2 | y <- [y1+dt, y1+2*dt..y2-dt]])/2.0 +
-  sum [ (f x y)*dt^2 | x <- [x1+dt,x1+2*dt..x2-dt], y <- [y1+dt, y1+2*dt..y2-dt]]
+dblIntg ::  Int -> (R -> R -> R) -> R -> R -> R -> R -> R
+
+-- n is the half step size, f is the function, x1, x2, y1 & y2
+-- are the limits of integration.
+
+dblIntg n f x1 x2 y1 y2  =
+  let dtx=(x2-x1)/fromIntegral(2*n)
+      dty=(y2-y1)/fromIntegral(2*n)
+  in dtx*dty*(f x1 y1  + f x2 y1  + f x1 y2 + f x2 y2)/4.0 +
+  (sum [ (f x y1)*dtx*dty | x <- [x1+dtx,x1+2*dtx..x2-dtx]])/2.0 +
+  (sum [ (f x y2)*dtx*dty | x <- [x1+dtx,x1+2*dtx..x2-dtx]])/2.0 +
+  (sum [ (f x1 y)*dtx*dty | y <- [y1+dty, y1+2*dty..y2-dty]])/2.0 +
+  (sum [ (f x2 y)*dtx*dty | y <- [y1+dty, y1+2*dty..y2-dty]])/2.0 +
+  sum [ (f x y)*dtx*dty | x <- [x1+dtx,x1+2*dtx..x2-dtx], y <- [y1+dty, y1+2*dty..y2-dty]]
   
