@@ -20,23 +20,13 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -}
 
-{- To run this program do:
-$ ghci  
-Loaded package environment from /home/cleetus/.ghc/x86_64-openbsd-9.2.4/environments/default
-GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
-ghci> :load trapezoidIntg.hs 
-[1 of 1] Compiling Main             ( trapezoidIntg.hs, interpreted )
-Ok, one module loaded.
-ghci> integral 0.05 sqrd 0.0 3.0
-9.001251
-ghci> 
--}
-
-sqrd :: Float -> Float
-sqrd x = x^2
-
-type R = Float
+type R = Double
 type Integration = (R -> R) -> R -> R -> R
 
-integral :: R -> Integration
-integral dt f a b = dt/2.0*(f(a)+f(b)) + sum [ f t * dt | t <- [a+dt, a+2*dt..b-dt]]
+-- n is the half step size, f is the function, a is the
+-- lower limit and b is the upper limit
+
+integral :: Int -> Integration
+integral n f a b =
+ let dt=(b-a)/fromIntegral(2*n)
+ in dt/2.0*(f(a)+f(b)) + sum [ f t * dt | t <- [a+dt, a+2*dt..b-dt]]
