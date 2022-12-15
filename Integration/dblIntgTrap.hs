@@ -1,6 +1,6 @@
 -- Computes a double integral by the trapezoid rule
 -- Computes the double integral by the trapezoid rule
--- n is half the number of steps for the imterval of integraion.
+-- n is half the number of steps for the interval of integraion.
 -- See the book "Differential and Integral Calculus"
 -- by Richard Courant,Volume 1, page 343
 {-
