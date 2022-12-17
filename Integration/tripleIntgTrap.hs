@@ -1,20 +1,18 @@
 -- Computes a triple integral by the trapezoid rule
 {-
 
-   /b /d  /f
-   |  |  |
-   |  |  | f(x,y,z) dzdydx
-   |  |  |
-   /a /c /e
-or in cylindrical coordinates
-
-   /Z /R  /2*pi
-   |  |  |
-   |  |  | f(r,q,z) r*dqdrdz
-   |  |  |
-   /0 /0 /0
-
-
+   /b /d  /f                  /Z /R  /2*pi  
+   |  |  |                    |  |  |
+   |  |  | f(x,y,z) dzdydx ,  |  |  | f(r,q,z)*r*dqdrdz
+   |  |  |                    |  |  |
+   /a /c /e                  /0 /0 /0
+   
+    /r /pi /2*pi             
+   |  |   |                
+   |  |   | f(r,q,p)*r*sin(q)*dpdqdr 
+   |  |   |                   
+   /0 /0  /0                 
+   
 
 NOTE: This routine only works for constant limits of integration. 
 
