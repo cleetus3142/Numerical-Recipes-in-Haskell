@@ -1,5 +1,5 @@
 -- Computes the integral by the trapezoid rule
--- This is from Scott Walck's "Learn Physics with Functional Programming"
+
 {-
 BSD 2-Clause License
 
